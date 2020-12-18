@@ -1,0 +1,194 @@
+ \documentclass[onecolumn]{aastex63}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{tensor}
+
+\lstset{frame=tb,
+  language=Python,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  commentstyle={\small\ttfamily},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4
+}
+
+\usepackage[T1]{fontenc}
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+\shortauthors{McClellan}
+\graphicspath{{./}{figures/}}
+
+
+\begin{document}
+
+\title{Scratch Work}
+\author{B. Connor McClellan}
+\affiliation{University of Virginia}
+\keywords{}
+
+\setlength\parindent{0pt}
+
+\ifx
+\section{Polar Coordinates}
+The probability distributions for polar coordinates $r$ and $\theta$ are
+\begin{equation}
+    P(r)dr \propto rdr
+\end{equation}
+
+\begin{equation}
+    P(\theta)d\theta \propto d\theta
+\end{equation}
+
+Their respective cumulative probability distributions are
+
+\begin{equation}
+    \xi = \frac{\int_0^rr'dr'}{\int_0^{R}rdr} = \frac{r^2}{R^2}
+\end{equation}
+
+\begin{equation}
+    \zeta = \frac{\int_0^\theta d\theta'}{\int_0^{2\pi}d\theta'} = \frac{\theta}{2\pi}
+\end{equation}
+
+for two uniform-random numbers between 0 and 1, $\xi$ and $\zeta$. Solving for $r$ and $\theta$,
+
+\begin{equation}
+    r = R\sqrt{\xi}
+\end{equation}
+
+\begin{equation}
+    \theta = 2\pi \zeta
+\end{equation}
+
+The transformation matrix between spherical polar coordinates and Cartesian coordinates is $\Lambda \indices{^\alpha_{\bar{\alpha}}}$, where $\bar{\alpha}$ corresponds to polar coordinates and $\alpha$ corresponds to Cartesian.
+
+\begin{equation}
+\Lambda \indices{^\alpha_{\bar{\alpha}}} = 
+\begin{bmatrix}
+    \partial x / \partial r & \partial x / \partial \theta & \partial x / \partial \phi\\
+    \partial y / \partial r & \partial y / \partial \theta & \partial y / \partial \phi\\
+    \partial z / \partial r & \partial z / \partial \theta & \partial z / \partial \phi
+\end{bmatrix}
+=
+\begin{bmatrix}
+    \sin{\theta} \cos{\phi} & r \cos{\theta} \cos{\phi} & -r \sin{\theta} \sin{\phi}\\
+    \sin{\theta} \sin{\phi} & r \cos{\theta} \sin{\phi} & r \sin{\theta} \cos{\phi}\\
+    \cos{\theta} & -r \sin{\theta} & 0
+\end{bmatrix}
+\end{equation}
+
+A vector in spherical coordinates can be transformed to Cartesian coordinates with
+
+\begin{equation*}
+    x^\alpha = \Lambda \indices{^\alpha_{\bar{\alpha}}} x^\bar{\alpha}
+\end{equation*}
+
+The $-\hat{z}$ unit vector in spherical polar coordinates is
+
+\begin{equation}
+    \begin{bmatrix}
+        -\cos{\theta} \\
+        \sin{\theta}\\
+        0
+    \end{bmatrix}
+\end{equation}
+
+Transforming to Cartesian, we obtain
+
+\begin{equation}
+    -\hat{z} = 
+    \begin{bmatrix}
+        \sin{\theta} \cos{\phi} & r \cos{\theta} \cos{\phi} & -r \sin{\theta} \sin{\phi}\\
+        \sin{\theta} \sin{\phi} & r \cos{\theta} \sin{\phi} & r \sin{\theta} \cos{\phi}\\
+        \cos{\theta} & -r \sin{\theta} & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        -\cos{\theta} \\
+        \sin{\theta}\\
+        0
+    \end{bmatrix}
+    =
+    \
+\end{equation}
+\fi
+
+\section{Closed-Form Solutions for Ly$\alpha$ Resonant Scattering}
+
+The flux at the surface of the sphere is 
+
+\begin{equation}\label{eq:H0surf}
+H_0(R,\nu)  =  \left( \frac{1}{3k\phi} \right)
+\left( \frac{\sqrt{6}L}{32\pi \Delta} \right)
+\left( \frac{1}{R^3} \right)
+\left( 
+\frac{ 1 }{ \cosh \left[ \frac{\pi \Delta}{k R} (\sigma - \sigma_{\rm s}) \right] +1 }
+\right)
+\end{equation}
+
+where
+
+\begin{equation} \label{delta}
+    \Delta = \frac{kR}{\sqrt{\pi}\tau_0}
+\end{equation}
+
+Equation C17 in \citet{2006ApJ...649...14D} reads
+
+\begin{equation} \label{dijkstra}
+    J(x) = \frac{\sqrt{\pi}}{\sqrt{24}a\tau_0}\left(\frac{x^2}{1 + \cosh{\sqrt{2\pi^3/27}(|x^3|/a\tau_0)}}\right)
+\end{equation}
+
+where $x$ is related to our frequency variable $\sigma$ by 
+
+\begin{equation} \label{sigma}
+    \sigma = \frac{\sqrt{2\pi^2/27}}{a} x^3
+\end{equation}
+
+The Voigt function line profile is defined by
+
+\begin{equation} \label{lineprofile}
+    \phi = \frac{a}{\pi\Delta x^2}
+\end{equation}
+
+Eq. \ref{dijkstra} is rewritten in our notation to show that it does not satisfy the necessary boundary condition for the two-stream approximation:
+
+\begin{equation}
+    J = \sqrt{3} H
+\end{equation}
+
+We change variables and make the necessary substitutions according to Eqs. \ref{delta} and \ref{sigma} as follows.
+
+\begin{equation}
+\begin{split}
+    J(x) &= \frac{\sqrt{\pi}}{\sqrt{24}a\tau_0}\left(\frac{x^2}{1 + \cosh{\sqrt{2\pi^3/27}(|x^3|/a\tau_0)}}\right)\\
+    J(\sigma) &= \frac{\sqrt{\pi}}{\sqrt{24}a\tau_0}\left(\frac{a/\pi \Delta \phi}{1 + \cosh{\sqrt{2\pi^3/27}(|a \sigma / \sqrt{2\pi^2/27}|/a\tau_0)}}\right)\\
+    J(\sigma) &= \frac{1}{\sqrt{24}}\frac{1}{\tau_0}\frac{1}{\sqrt{\pi}\Delta \phi}\left(\frac{1}{1 + \cosh{\left[\frac{\sqrt{\pi}}{\tau_0}|\sigma|\right]}}\right)\\
+    J(\sigma) &=
+    \frac{1}{\sqrt{24}}\frac{\sqrt{\pi} \Delta}{kR}\frac{1}{\sqrt{\pi}\Delta \phi}\left(\frac{1}{1 + \cosh{\left[\frac{\pi \Delta}{kR}|\sigma|\right]}}\right)\\
+    J(\sigma) &=
+    \left(\frac{1}{3k\phi}\right) \left(\frac{1}{2\sqrt{6}}\right)\left(\frac{1}{R}\right)\left(\frac{1}{1 + \cosh{\left[\frac{\pi \Delta}{kR}|\sigma|\right]}}\right)\\
+\end{split}
+\end{equation}
+
+\citet{2006ApJ...649...14D} have multiplied their Eq. C17 by $4\pi R^2$ to obtain the total emerging flux density at the surface. Thus, dividing by the surface area of the sphere, we obtain
+
+\begin{equation}
+    J(\sigma) =
+    \left(\frac{1}{3k\phi}\right) \left(\frac{1}{8\sqrt{6}\pi}\right)\left(\frac{1}{R^3}\right)\left(\frac{1}{1 + \cosh{\left[\frac{\pi \Delta}{kR}|\sigma|\right]}}\right)\\
+\end{equation}
+
+The missing term necessary to satisfy the BC is $\sqrt{3} \cdot 6L/(4\Delta)$, which would yield
+
+\begin{equation}
+    J(\sigma) = \sqrt{3}
+    \left(\frac{1}{3k\phi}\right) \left(\frac{\sqrt{6}L}{32\pi\Delta}\right)\left(\frac{1}{R^3}\right)\left(\frac{1}{1 + \cosh{\left[\frac{\pi \Delta}{kR}|\sigma|\right]}}\right) = \sqrt{3} H\\
+\end{equation}
+
+
+
+
+\bibliography{bibliography}{}
+\bibliographystyle{aasjournal}
+
+\end{document}
