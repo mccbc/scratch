@@ -1,0 +1,116 @@
+ \documentclass[onecolumn]{aastex63}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{tensor}
+
+\lstset{frame=tb,
+  language=Python,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  commentstyle={\small\ttfamily},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4
+}
+
+\usepackage[T1]{fontenc}
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+\shortauthors{McClellan}
+\graphicspath{{./}{figures/}}
+
+
+\begin{document}
+
+\title{Scratch Work}
+\author{B. Connor McClellan}
+\affiliation{University of Virginia}
+\keywords{}
+
+\setlength\parindent{0pt}
+
+
+\section{Polar Coordinates}
+The probability distributions for polar coordinates $r$ and $\theta$ are
+\begin{equation}
+    P(r)dr \propto rdr
+\end{equation}
+
+\begin{equation}
+    P(\theta)d\theta \propto d\theta
+\end{equation}
+
+Their respective cumulative probability distributions are
+
+\begin{equation}
+    \xi = \frac{\int_0^rr'dr'}{\int_0^{R}rdr} = \frac{r^2}{R^2}
+\end{equation}
+
+\begin{equation}
+    \zeta = \frac{\int_0^\theta d\theta'}{\int_0^{2\pi}d\theta'} = \frac{\theta}{2\pi}
+\end{equation}
+
+for two uniform-random numbers between 0 and 1, $\xi$ and $\zeta$. Solving for $r$ and $\theta$,
+
+\begin{equation}
+    r = R\sqrt{\xi}
+\end{equation}
+
+\begin{equation}
+    \theta = 2\pi \zeta
+\end{equation}
+
+The transformation matrix between spherical polar coordinates and Cartesian coordinates is $\Lambda \indices{^\alpha_{\bar{\alpha}}}$, where $\bar{\alpha}$ corresponds to polar coordinates and $\alpha$ corresponds to Cartesian.
+
+\begin{equation}
+\Lambda \indices{^\alpha_{\bar{\alpha}}} = 
+\begin{bmatrix}
+    \partial x / \partial r & \partial x / \partial \theta & \partial x / \partial \phi\\
+    \partial y / \partial r & \partial y / \partial \theta & \partial y / \partial \phi\\
+    \partial z / \partial r & \partial z / \partial \theta & \partial z / \partial \phi
+\end{bmatrix}
+=
+\begin{bmatrix}
+    \sin{\theta} \cos{\phi} & r \cos{\theta} \cos{\phi} & -r \sin{\theta} \sin{\phi}\\
+    \sin{\theta} \sin{\phi} & r \cos{\theta} \sin{\phi} & r \sin{\theta} \cos{\phi}\\
+    \cos{\theta} & -r \sin{\theta} & 0
+\end{bmatrix}
+\end{equation}
+
+A vector in spherical coordinates can be transformed to Cartesian coordinates with
+
+\begin{equation*}
+    x^\alpha = \Lambda \indices{^\alpha_{\bar{\alpha}}} x^\bar{\alpha}
+\end{equation*}
+
+The $-\hat{z}$ unit vector in spherical polar coordinates is
+
+\begin{equation}
+    \begin{bmatrix}
+        -\cos{\theta} \\
+        \sin{\theta}\\
+        0
+    \end{bmatrix}
+\end{equation}
+
+Transforming to Cartesian, we obtain
+
+\begin{equation}
+    -\hat{z} = 
+    \begin{bmatrix}
+        \sin{\theta} \cos{\phi} & r \cos{\theta} \cos{\phi} & -r \sin{\theta} \sin{\phi}\\
+        \sin{\theta} \sin{\phi} & r \cos{\theta} \sin{\phi} & r \sin{\theta} \cos{\phi}\\
+        \cos{\theta} & -r \sin{\theta} & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        -\cos{\theta} \\
+        \sin{\theta}\\
+        0
+    \end{bmatrix}
+    =
+    \
+\end{equation}
+
+\end{document}
