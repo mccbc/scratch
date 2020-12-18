@@ -102,6 +102,48 @@ The $\sin(n\pi)$ terms evaluate to zero, and the $\cos(n\pi)$ terms are equivale
     H(\sigma) = \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R^2} \frac{1}{r_s} \sum_{n=1}^{\infty} (-1)^n \sin{\left(\frac{n\pi r_s}{R}\right)} \exp{(-n \pi |\sigma|/R\kappa_0)}
 \end{equation}
 
+Writing out the $\sin$ and $\exp$ terms, we are able to combine them into two separate factors raised to the power $n$, allowing the sum to be written as two geometric series.
+
+\begin{equation}
+    \sin{x} = \frac{e^{ix}-e^{-ix}}{2i}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        H(\sigma) &= \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R^2} \frac{1}{r_s} \sum_{n=1}^{\infty} (-1)^n \frac{\exp{(in\pi r_s / R)}-\exp{(-in\pi r_s/R})}{2i} \exp{(-n \pi |\sigma|/R\kappa_0)} \\
+        &= \frac{1}{3 \phi} \frac{\sqrt{6}}{32 i \pi^2 R^2} \frac{1}{r_s} \sum_{n=1}^{\infty} (-1)^n \left[ \exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)^n}-\exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)^n}\right]
+    \end{split}
+\end{equation}
+
+Using the geometric series
+
+\begin{equation}
+    \sum_{n=1}^{\infty}(-1)^nx^n = \frac{-x}{1+x}, \hspace{0.2cm} |x| < 1
+\end{equation}
+
+the sum can be evaluated to obtain
+
+\begin{equation}
+    H(\sigma) = \frac{1}{3 \phi} \frac{\sqrt{6}}{32 i \pi^2 R^2} \frac{1}{r_s} \left[\frac{-\exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)}}{1 + \exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)}}-\frac{-\exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)}}{1 + \exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)}}\right]
+\end{equation}
+
+Dividing top and bottom of each fraction through by its numerator, this simplifies to
+
+\begin{equation}
+    H(\sigma) = \frac{1}{3 \phi} \frac{\sqrt{6}}{32 i \pi^2 R^2} \frac{1}{r_s} \left[\frac{1}{1 + \exp{\left(\frac{\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)}}-\frac{1}{1 + \exp{\left(\frac{\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)}}\right]
+\end{equation}
+
+Let us rewrite the terms in brackets as trigonometric functions, using the following variables as their arguments.
+
+\begin{equation}
+    \alpha = \frac{\pi |\sigma|}{R\kappa_0}; \hspace{0.4cm} \beta = \frac{\pi r_s}{R}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+    \frac{1}{1+e^{\alpha - i\beta}} - \frac{1}{1+e^{\alpha + i\beta}} &=     
+    \end{split}
+\end{equation}
 
 \bibliography{bibliography}{}
 \bibliographystyle{aasjournal}
