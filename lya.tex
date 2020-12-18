@@ -36,7 +36,7 @@
 $x$ is related to the frequency variable $\sigma$ by 
 
 \begin{equation} \label{sigma}
-    \sigma = \frac{\sqrt{2\pi^2/27}}{a} x^3
+    \sigma = \frac{\sqrt{2\pi/27}}{a} x^3
 \end{equation}
 
 The Voigt function line profile is defined as 
@@ -47,7 +47,7 @@ The Voigt function line profile is defined as
 
 and
 
-\begin{equation}
+\begin{equation} \label{tau}
     R\kappa_0 = \tau_0
 \end{equation}
 
@@ -59,7 +59,7 @@ Equation C17 in \citet{2006ApJ...649...14D} reads
 
 This will be checked against the boundary condition
 
-\begin{equation}
+\begin{equation} \label{bc}
     J = \sqrt{3} H
 \end{equation}
 
@@ -79,27 +79,27 @@ at lowest order. To find the flux, we calculate the following derivative.
 
 \begin{equation}
     \begin{split}
-    H(r, \sigma) &= \frac{1}{3\kappa_0 \phi}\frac{\partial J}{\partial r}\\
-    &= \frac{1}{3\kappa_0 \phi}\frac{\partial}{\partial r}\left(\frac{\sqrt{6}}{16 \pi^2 R} \frac{\kappa_0}{rr_s} \sum_{n=1}^{\infty}\sin(\lambda_n r) \sin(\lambda_n r_s) \frac{\exp{(-\lambda_n |\sigma|/\kappa_0)}}{\lambda_n}\right)
+    H(r, \sigma) &= - \frac{1}{3\kappa_0 \phi}\frac{\partial J}{\partial r}\\
+    &= - \frac{1}{3\kappa_0 \phi}\frac{\partial}{\partial r}\left(\frac{\sqrt{6}}{16 \pi^2 R} \frac{\kappa_0}{rr_s} \sum_{n=1}^{\infty}\sin(\lambda_n r) \sin(\lambda_n r_s) \frac{\exp{(-\lambda_n |\sigma|/\kappa_0)}}{\lambda_n}\right)
     \end{split}
 \end{equation}
 
 Applying the product rule within the sum, we obtain
 
 \begin{equation}
-    H(r, \sigma) = \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R} \frac{1}{r_s} \sum_{n=1}^{\infty} \sin(\lambda_n r_s) \frac{\exp{(-\lambda_n |\sigma|/\kappa_0)}}{\lambda_n} \left[ \frac{-\sin(\lambda_n r)}{r^2} + \frac{\lambda_n \cos(\lambda_n r)}{r}\right]
+    H(r, \sigma) = - \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R} \frac{1}{r_s} \sum_{n=1}^{\infty} \sin(\lambda_n r_s) \frac{\exp{(-\lambda_n |\sigma|/\kappa_0)}}{\lambda_n} \left[ \frac{-\sin(\lambda_n r)}{r^2} + \frac{\lambda_n \cos(\lambda_n r)}{r}\right]
 \end{equation}
 
 At this point, the expression is evaluated at the surface, $r=R$. Eq. \ref{lambdan} is substituted in for $\lambda_n$.
 
 \begin{equation}
-    H(\sigma) = \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R} \frac{1}{r_s} \sum_{n=1}^{\infty} \sin{\left(\frac{n\pi r_s}{R}\right)} \frac{\exp{(-n \pi |\sigma|/R\kappa_0)}}{\left(\frac{n\pi}{R}\right)} \left[ \frac{-\sin(n \pi)}{R^2} + \frac{n \pi \cos(n \pi)}{R^2}\right]
+    H(\sigma) = - \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R} \frac{1}{r_s} \sum_{n=1}^{\infty} \sin{\left(\frac{n\pi r_s}{R}\right)} \frac{\exp{(-n \pi |\sigma|/R\kappa_0)}}{\left(\frac{n\pi}{R}\right)} \left[ \frac{-\sin(n \pi)}{R^2} + \frac{n \pi \cos(n \pi)}{R^2}\right]
 \end{equation}
 
 The $\sin(n\pi)$ terms evaluate to zero, and the $\cos(n\pi)$ terms are equivalent to $(-1)^n$. We now have
 
 \begin{equation}
-    H(\sigma) = \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R^2} \frac{1}{r_s} \sum_{n=1}^{\infty} (-1)^n \sin{\left(\frac{n\pi r_s}{R}\right)} \exp{(-n \pi |\sigma|/R\kappa_0)}
+    H(\sigma) = - \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R^2} \frac{1}{r_s} \sum_{n=1}^{\infty} (-1)^n \sin{\left(\frac{n\pi r_s}{R}\right)} \exp{(-n \pi |\sigma|/R\kappa_0)}
 \end{equation}
 
 Writing out the $\sin$ and $\exp$ terms, we are able to combine them into two separate factors raised to the power $n$, allowing the sum to be written as two geometric series.
@@ -110,8 +110,8 @@ Writing out the $\sin$ and $\exp$ terms, we are able to combine them into two se
 
 \begin{equation}
     \begin{split}
-        H(\sigma) &= \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R^2} \frac{1}{r_s} \sum_{n=1}^{\infty} (-1)^n \frac{\exp{(in\pi r_s / R)}-\exp{(-in\pi r_s/R})}{2i} \exp{(-n \pi |\sigma|/R\kappa_0)} \\
-        &= \frac{1}{3 \phi} \frac{\sqrt{6}}{32 i \pi^2 R^2} \frac{1}{r_s} \sum_{n=1}^{\infty} (-1)^n \left[ \exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)^n}-\exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)^n}\right]
+        H(\sigma) &= - \frac{1}{3 \phi} \frac{\sqrt{6}}{16 \pi^2 R^2} \frac{1}{r_s} \sum_{n=1}^{\infty} (-1)^n \frac{\exp{(in\pi r_s / R)}-\exp{(-in\pi r_s/R})}{2i} \exp{(-n \pi |\sigma|/R\kappa_0)} \\
+        &= - \frac{1}{3 \phi} \frac{\sqrt{6}}{32 i \pi^2 R^2} \frac{1}{r_s} \sum_{n=1}^{\infty} (-1)^n \left[ \exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)^n}-\exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)^n}\right]
     \end{split}
 \end{equation}
 
@@ -124,7 +124,7 @@ Using the geometric series
 the sum can be evaluated to obtain
 
 \begin{equation}
-    H(\sigma) = \frac{1}{3 \phi} \frac{\sqrt{6}}{32 i \pi^2 R^2} \frac{1}{r_s} \left[\frac{-\exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)}}{1 + \exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)}}-\frac{-\exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)}}{1 + \exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)}}\right]
+    H(\sigma) = - \frac{1}{3 \phi} \frac{\sqrt{6}}{32 i \pi^2 R^2} \frac{1}{r_s} \left[\frac{-\exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)}}{1 + \exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} + \frac{i\pi r_s}{R}\right)}}-\frac{-\exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)}}{1 + \exp{\left(\frac{-\pi |\sigma|}{R\kappa_0} - \frac{i\pi r_s}{R}\right)}}\right]
 \end{equation}
 
 Dividing top and bottom of each fraction through by its numerator, this simplifies to
@@ -154,6 +154,21 @@ With this, Eq. \ref{before_trig} becomes
 \begin{equation} \label{after_trig}
     H(\sigma) = \frac{1}{3 \phi} \frac{\sqrt{6}}{32 \pi^2 R^2} \frac{1}{r_s} \left(\frac{\sin{\left(\frac{\pi r_s}{R}\right)}}{\cos{\left(\frac{\pi r_s}{R}\right)} + \cosh{\left(\frac{\pi |\sigma|}{R\kappa_0}\right)}}\right)
 \end{equation}
+
+We now take $r_s \rightarrow 0$, taking advantage of the approximation $\sin(x) \approx x$ for small $x$.
+
+\begin{equation}
+    H(\sigma) = \frac{1}{3 \phi} \frac{\sqrt{6}}{32 \pi R^3} \left(\frac{1}{1 + \cosh{\left(\frac{\pi |\sigma|}{R\kappa_0}\right)}}\right)
+\end{equation}
+
+Substituting in Eq. \ref{sigma} for $\sigma$, Eq. \ref{lineprofile} for $\phi$, Eq. \ref{tau} for $R \kappa_0$, and multiplying through by $4\pi R^2$ to obtain the total flux at the surface of the sphere, we are left with
+
+\begin{equation} \label{final}
+    H(x) = \frac{\sqrt{\pi}}{2\sqrt{24}aR} \left(\frac{x^2}{1 + \cosh{\left(\sqrt{2\pi^3/27}|x^3|/a\tau_0\right)}}\right)
+\end{equation}
+
+Notably, there appears to be a surplus factor of $\kappa_0$ in Eq. \ref{dijkstra}. If it were present in Eq. \ref{final}, it would combine with the $R$ in the denominator to form another factor of $\tau_0$ outside. In this case, the two equations would be related by the expression $J(x) = 2 H(x)$, suggesting that the boundary condition (Eq. \ref{bc}) is not satisfied.
+
 
 \bibliography{bibliography}{}
 \bibliographystyle{aasjournal}
